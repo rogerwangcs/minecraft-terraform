@@ -101,15 +101,20 @@ resource "google_compute_instance" "minecraft_server_instance" {
         ports:
         - "25565:25565"
         environment:
+          SERVER_NAME: "Rooterbuster's Minecraft Server"
           EULA: "TRUE"
-          TYPE: FORGE
+          ONLINE_MODE: "FALSE"
+          EXEC_DIRECTLY: "true"
+          RCON_PASSWORD: "root1999"
+          TYPE: "FORGE"
           DEBUG: "true"
           OVERRIDE_SERVER_PROPERTIES: "true"
-          DIFFICULTY: "hard"
+          DIFFICULTY: "easy"
           MAX_TICK_TIME: "-1"
           ALLOW_FLIGHT: "true"
           ENABLE_COMMAND_BLOCK: "true"
-          MEMORY: "3G"
+          SNOOPER_ENABLED: "false"
+          MAX_MEMORY: "3G"
         volumes:
         - mc_forge:/data
         - ./mods:/mods:ro
